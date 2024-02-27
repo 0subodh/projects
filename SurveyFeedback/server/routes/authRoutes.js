@@ -1,8 +1,8 @@
 const passport = require("passport");
 
 module.exports = (app) => {
-  app.get("/", (req, res) => {
-    res.send("Home Page");
+  app.get("/api", (req, res) => {
+    res.json({ users: ["Ram", "Shiva", "Gita"] });
   });
 
   app.get("/auth/google", passport.authenticate("google"));
@@ -18,6 +18,7 @@ module.exports = (app) => {
   });
 
   app.get("/api/user", (req, res) => {
+    console.log(req.user);
     res.send(req.user);
   });
 };
